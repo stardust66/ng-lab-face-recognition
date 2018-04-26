@@ -1,1 +1,7 @@
-venv
+venv/
+saved_models/*
+logs/
+test_images/*
+.ipynb_checkpoints/
+
+!*.gitkeep
