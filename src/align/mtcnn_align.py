@@ -1,8 +1,8 @@
 import numpy as np
 import tensorflow as tf
-import facenet.src.align.detect_face as detect_face
+from ..facenet.src.align import detect_face
 
-class Aligner():
+class MtcnnAligner():
     def __init__(self):
         sess = tf.get_default_session()
         self.pnet, self.rnet, self.onet = detect_face.create_mtcnn(sess,

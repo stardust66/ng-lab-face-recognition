@@ -1,7 +1,7 @@
 """Logs pretrained model for tensorboard graph visualization"""
 
 import tensorflow as tf
-import facenet.src.facenet as facenet
+from src.facenet.src import facenet
 
 with tf.Session() as sess:
     facenet.load_model("./saved_models/model_casia")

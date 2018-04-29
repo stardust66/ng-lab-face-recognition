@@ -1,6 +1,6 @@
 import numpy as np
 import tensorflow as tf
-import facenet.src.facenet as facenet
+from .facenet.src import facenet
 
 def load_model():
     facenet.load_model("./saved_models/model_vggface2")
