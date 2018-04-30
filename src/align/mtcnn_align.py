@@ -48,6 +48,3 @@ class MtcnnAligner():
         output_box[3] = np.minimum(filtered_box[3] + margin/2, img_size[0])
 
         return output_box
-
-def crop(img, box):
-    return img[box[1]:box[3], box[0]:box[2]]
