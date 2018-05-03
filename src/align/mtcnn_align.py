@@ -7,7 +7,7 @@ class MtcnnAligner():
         sess = tf.get_default_session()
         self.pnet, self.rnet, self.onet = detect_face.create_mtcnn(sess,
                                                                        None)
-    
+
     def align_face(self, img, minsize=20, threshold=[0.6, 0.6, 0.7],
                           factor=0.709, margin=32):
 
