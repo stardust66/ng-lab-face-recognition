@@ -4,15 +4,7 @@ facial recognition. Still in the preliminary stage.
 
 ## Dependencies
 See `requirements.txt`. Many of the requirements are inherited from
-https://github.com/davidsandberg/facenet. If you want to use the YOLO
-aligner, you need to install darkflow. It's not in the requirements
-file because it needs Cython as a build dependency but pip doesn't
-install the packages in the right order for it to correctly build
-darkflow. Install darkflow with the following command
-
-```
-pip install git+https://github.com/thtrieu/darkflow.git
-```
+https://github.com/davidsandberg/facenet.
 
 ## Notebook
 In the notebook `Embeddings_Test.ipynb`, I've been exploring the embeddings
