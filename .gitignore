@@ -1,7 +1,15 @@
 venv/
 saved_models/*
 logs/
+
 test_images/*
+!test_images/jason.jpg
+!test_images/jason2.jpg
+!test_images/jason3.jpg
+!test_images/sam.jpg
+!test_images/sam2.jpg
+!test_images/sam3.jpg
+
 .ipynb_checkpoints/
 
 !*.gitkeep

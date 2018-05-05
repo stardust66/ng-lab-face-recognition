@@ -12,6 +12,11 @@ and building a simple face recognizer. If the GitHub notebook viewer doesn't
 work, use jupyter's [nbviewer](https://nbviewer.jupyter.org/) and paste in the
 notebook URL or click [here](https://nbviewer.jupyter.org/github/StPauls-Computer-Science/ng-lab-face-recognition/blob/master/Embeddings_Test.ipynb).
 
+#### A Note About Test Images
+I've provided three pictures of myself and Sam Henderson, who agreed to have
+his pictures put online. For other pictures referenced in the notebook, just
+find some pictures online or get some from Google Images.
+
 ## Visualizing the saved model
 ```
 python log_saved.py
