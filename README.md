@@ -27,3 +27,9 @@ the model visually.
 
 <img src="https://i.imgur.com/N2HBm2d.png" width=800
 alt="tensoboard visualizations">
+
+## Acknowledgements
+I'm using David Sandberg's implementation of FaceNet (included as a submodule)
+and his pretrained weights. I'm also using OpenFace's wrapper around dlib's
+face detection and alignment. [OpenFace](http://cmusatyalab.github.io/openface/)
+is an open source face recognition module developed by Carnegie Mellon.
