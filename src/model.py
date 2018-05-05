@@ -1,9 +1,15 @@
+import os
 import numpy as np
 import tensorflow as tf
 from .facenet.src import facenet
 
 def load_model():
-    facenet.load_model("./saved_models/model_vggface2")
+    model_path = os.path.join(
+        os.path.dirname(__file__),
+        "..",
+        "saved_models/model_vggface2"
+    )
+    facenet.load_model(model_path)
 
 def get_embeddings(img):
     sess = tf.get_default_session()
