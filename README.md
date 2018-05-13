@@ -7,7 +7,11 @@ See `requirements.txt`. Many of the requirements are inherited from
 https://github.com/davidsandberg/facenet.
 
 ## Setup
-You need to have python 3 installed.
+You need to have python 3 installed. This repository uses git-lfs, so you
+should probably get it too, here: https://git-lfs.github.com/. You should also
+download pretrained facenet models from
+https://github.com/davidsandberg/facenet#pre-trained-models, unzip them, and
+place them under the saved_models top level directory. Then run:
 ```
 git clone --recursive https://github.com/StPauls-Computer-Science/ng-lab-face-recognition.git
 pip install -r requirements.txt
