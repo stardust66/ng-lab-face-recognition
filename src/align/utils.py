@@ -25,6 +25,12 @@ def crop(img, box, use_normalized_coordinates=False):
 def resize(img, imgDim):
     return cv2.resize(img, (imgDim, imgDim))
 
+def filter_boxes_by_score(boxes, scores, threshold=0.7):
+    indices = np.where(scores > threshold)
+    filtered_boxes = boxes[indices]
+    filtered_scores = scores[indices]
+    return filtered_boxes, filtered_scores
+
 def get_largest_bounding_box(boxes):
     """Returns the largest bounding box.
 

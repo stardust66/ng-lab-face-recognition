@@ -1,7 +1,8 @@
 import os
 import numpy as np
 import tensorflow as tf
-from .utils import get_best_score_box, crop, resize
+from .utils import (filter_boxes_by_score, get_largest_bounding_box,
+                    crop, resize)
 
 class SSDAligner():
     def __init__(self):
@@ -39,6 +40,8 @@ class SSDAligner():
         # Convert from y1, x1, y2, x2 to x1, y1, x2, y2
         boxes = boxes[:, [1, 0, 3, 2]]
 
-        highest_score_box = get_best_score_box(boxes, scores)
-        return resize(crop(image, highest_score_box,
-                           use_normalized_coordinates=True), image_dim)
+        filtered_boxes, filtered_scores = filter_boxes_by_score(boxes, scores)
+        if len(filtered_boxes > 0):
+            largest_box = get_largest_bounding_box(filtered_boxes)
+            return resize(crop(image, largest_box,
+                               use_normalized_coordinates=True), image_dim)
