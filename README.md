@@ -6,6 +6,13 @@ facial recognition. Still in the preliminary stage.
 See `requirements.txt`. Many of the requirements are inherited from
 https://github.com/davidsandberg/facenet.
 
+## Setup
+You need to have python 3 installed.
+```
+git clone --recursive https://github.com/StPauls-Computer-Science/ng-lab-face-recognition.git
+pip install -r requirements.txt
+```
+
 ## Notebook
 In the notebook `Embeddings_Test.ipynb`, I've been exploring the embeddings
 and building a simple face recognizer. If the GitHub notebook viewer doesn't
