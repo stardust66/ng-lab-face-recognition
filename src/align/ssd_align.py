@@ -8,7 +8,7 @@ class SSDAligner():
     def __init__(self):
         checkpoint_path = os.path.join(
             os.path.dirname(__file__),
-            "models"
+            "models/"
             "frozen_inference_graph_face.pb"
         )
 
