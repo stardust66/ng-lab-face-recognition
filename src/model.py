@@ -11,7 +11,9 @@ class FaceNet():
             "..",
             "saved_models/model_vggface2"
         )
-        facenet.load_model(model_path)
+
+        with self.sess.as_default():
+            facenet.load_model(model_path)
 
     def get_embeddings(self, img):
         graph = self.sess.graph

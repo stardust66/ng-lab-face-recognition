@@ -4,8 +4,7 @@ import tensorflow as tf
 from src import model, align, utils
 
 sess = tf.Session()
-with sess.as_default():
-    facenet = model.FaceNet()
+facenet = model.FaceNet(sess)
 aligner = align.SSDAligner()
 
 def build_embedding_database():
