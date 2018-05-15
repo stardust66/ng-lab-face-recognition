@@ -1,6 +1,7 @@
 venv/
 saved_models/*
 logs/
+databases/*
 
 test_images/*
 !test_images/jason.jpg
@@ -12,4 +13,4 @@ test_images/*
 
 .ipynb_checkpoints/
 
-!*.gitkeep
+!.gitkeep

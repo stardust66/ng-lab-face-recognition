@@ -1,26 +1,23 @@
 import cv2
 import imageio
+import os
 import tensorflow as tf
-from src import model, align, utils
+from src import model, align, utils, database
 
 sess = tf.Session()
 facenet = model.FaceNet(sess)
 aligner = align.SSDAligner()
 
 def build_embedding_database():
-    jason = imageio.imread("./test_images/jason2.jpg")
-    sam = imageio.imread("./test_images/sam.jpg")
+    database_path = os.path.abspath("./databases/test.npz")
+    photo_paths = [
+        os.path.abspath("./test_images/sam.jpg"),
+        os.path.abspath("./test_images/jason.jpg")
+    ]
+    if not os.path.isfile(database_path):
+        database.create_database(photo_paths, database_path)
 
-    jason_face = aligner.align_and_crop_face(jason)
-    sam_face = aligner.align_and_crop_face(sam)
-
-    jason_embeddings = facenet.get_embeddings(jason_face)
-    sam_embeddings = facenet.get_embeddings(sam_face)
-
-    embeddings_database = [jason_embeddings, sam_embeddings]
-    names = ["Jason Chen", "Katherine Hughes", "Sam Henderson"]
-
-    return embeddings_database, names
+    return database.load_database(database_path)
 
 def continous_detect(embeddings_database, names):
     with utils.VideoCapture(0) as capture:
