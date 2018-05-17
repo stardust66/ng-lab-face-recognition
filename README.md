@@ -17,6 +17,20 @@ git clone --recursive https://github.com/StPauls-Computer-Science/ng-lab-face-re
 pip install -r requirements.txt
 ```
 
+## Running Recognition
+You should first generate a database of embeddings with
+```
+python create_database.py (output_file) (input_directory) (image_filenames)
+```
+Then, you can run real-time camera facial recognition with your webcame by
+running
+```
+python camera_recognize.py (database_path)
+```
+where `database_path` refers to the path to the file you just generated. The
+filenames will be used as labels (people's names), so name your files
+appropriately.
+
 ## Notebook
 In the notebook `Embeddings_Test.ipynb`, I've been exploring the embeddings
 and building a simple face recognizer. If the GitHub notebook viewer doesn't
@@ -43,4 +57,5 @@ alt="tensoboard visualizations">
 I'm using David Sandberg's implementation of FaceNet (included as a submodule)
 and his pretrained weights. I'm also using OpenFace's wrapper around dlib's
 face detection and alignment. [OpenFace](http://cmusatyalab.github.io/openface/)
-is an open source face recognition module developed by Carnegie Mellon.
+is an open source face recognition module developed by Carnegie Mellon. To find
+out more about FaceNet, read the original paper on arxiv [here](https://arxiv.org/abs/1503.03832)
