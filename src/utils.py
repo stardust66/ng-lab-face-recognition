@@ -29,14 +29,13 @@ def distance_from_all(embeddings_database, embeddings):
 
 def classify(embeddings_database, embeddings, threshold):
     distance = distance_from_all(embeddings_database, embeddings)
+    min_distance = np.amin(distance)
 
-    if np.amin(distance) > threshold:
-        return -1
-    else:
-        print(np.amin(distance))
+    if min_distance > threshold:
+        return -1, min_distance
 
     person_index = np.argmin(distance)
-    return person_index
+    return person_index, min_distance
 
 @contextmanager
 def VideoCapture(camera_id):

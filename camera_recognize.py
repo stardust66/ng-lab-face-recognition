@@ -30,9 +30,11 @@ def continous_detect(embeddings_database, names):
                 break
 
             embeddings = facenet.get_embeddings(face)
-            person_index = utils.classify(embeddings_database, embeddings, 0.3)
+            person_index, distance = utils.classify(embeddings_database,
+                                                    embeddings, 0.35)
             if person_index != -1:
                 print(names[person_index])
+                print("Distance: {}".format(distance))
             else:
                 print("Unknown face")
 
