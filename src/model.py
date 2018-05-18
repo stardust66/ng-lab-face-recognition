@@ -9,7 +9,7 @@ class FaceNet():
         model_path = os.path.join(
             os.path.dirname(__file__),
             "..",
-            "saved_models/model_vggface2"
+            "saved_models/model_casia"
         )
 
         with self.sess.as_default():
