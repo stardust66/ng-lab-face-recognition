@@ -3,28 +3,25 @@ import cv2
 import numpy as np
 from . import facenet
 
-def distance(embeddings1, embeddings2, metric="l2_norm"):
+def distance(embeddings1, embeddings2, metric="squared_l2"):
     """Calculates distance between embeddings
 
-    Metric can be 'l2_norm' or 'cosine_similarity'
+    Metric can be 'squared_l2' or 'cosine_similarity'
     """
 
-    # In the facenet library, distance metric 0 is l2norm while distance
-    # metric 1 is cosine similarity.
+    # In the facenet library, distance metric 0 is squared l2 norm while
+    # distance metric 1 is cosine similarity.
     if metric == "l2_norm":
-        # Implementing L2 Norm myself because the facenet.distance doesn't take
-        # square root after summing the differences. In practice this doesn't
-        # matter as long as we are consistent, but I don't want to be confusing
-        return np.linalg.norm(embeddings2 - embeddings1)
+        return facenet.distance(embeddings1, embeddings2, distance_metric=0)[0]
     elif metric == "cosine_similarity":
         return facenet.distance(embeddings1, embeddings2, distance_metric=1)[0]
     else:
-        raise ("metric must be either l2_norm or cosine_similarity"
+        raise ("metric must be either squared_l2 or cosine_similarity"
                ", instead received '{}'.".format(metric))
 
 def distance_from_all(embeddings_database, embeddings):
     diff = np.subtract(embeddings_database, embeddings)
-    norm = np.sqrt(np.sum(np.square(diff), axis=-1))
+    norm = np.sum(np.square(diff), axis=-1)
     return np.squeeze(norm)
 
 def classify(embeddings_database, embeddings, threshold):

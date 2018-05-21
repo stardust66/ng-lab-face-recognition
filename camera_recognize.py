@@ -17,7 +17,7 @@ def continous_detect(embeddings_database, names):
             success, image = capture.read()
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-            person_index, distance = recognizer.classify(image, 0.15,
+            person_index, distance = recognizer.classify(image, 0.02,
                                                          debug=True)
             if person_index is None:
                 print("No face detected")
