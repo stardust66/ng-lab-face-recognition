@@ -26,8 +26,12 @@ def create_database(photo_paths, output_path, model_path,
     for i, photo_path in enumerate(photo_paths):
         photo = imageio.imread(photo_path)
         face = aligner.align_and_crop_face(photo)
-
         name = os.path.basename(photo_path).split(".")[0]
+
+        if face is None:
+            print("Couldn't align photo for {}, skipping".format(name))
+            continue
+
         names.append(name)
 
         # Perform standardization

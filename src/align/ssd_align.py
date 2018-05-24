@@ -33,9 +33,12 @@ class SSDAligner():
         boxes = self.graph.get_tensor_by_name("final_boxes:0")
         scores = self.graph.get_tensor_by_name("final_scores:0")
 
-        boxes, scores =  self.sess.run([boxes, scores], feed_dict={
-            image_tensor: image_expanded
-        })
+        try:
+            boxes, scores =  self.sess.run([boxes, scores], feed_dict={
+                image_tensor: image_expanded
+            })
+        except ValueError:
+            return None
 
         # Convert from y1, x1, y2, x2 to x1, y1, x2, y2
         boxes = boxes[:, [1, 0, 3, 2]]
