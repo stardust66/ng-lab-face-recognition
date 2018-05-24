@@ -3,8 +3,11 @@ Raspberry Pi that greets people at the entrance of the engineering lab using
 facial recognition. Still in the preliminary stage.
 
 ## Dependencies
-See `requirements.txt`. Many of the requirements are inherited from
-https://github.com/davidsandberg/facenet.
+See `requirements.txt` for Python dependencies. Many of the requirements are
+inherited from https://github.com/davidsandberg/facenet.
+
+The audio component depends on `mpg321`, so install that with your favorite
+package manager.
 
 ## Setup
 You need to have python 3 installed. This repository uses git-lfs, so you
