@@ -5,17 +5,16 @@ import argparse
 import tensorflow as tf
 from src import model, align, utils, database
 from src.recognizer import Recognizer
+from src.audio import AudioGreeter
 
 parser = argparse.ArgumentParser(description="Perform realtime facial "
                                              "recognition")
 parser.add_argument("database_path", help="Path to the embeddings database")
 
-model_path = os.path.join(
-    os.path.dirname(__file__),
-    "saved_models/model_vggface2"
-)
+model_path = os.path.abspath("./saved_models/model_vggface2")
+greeter_save_path = os.path.abspath("./tmp")
 
-def continous_detect(embeddings_database, names):
+def continous_detect(embeddings_database, names, greeter=None):
     recognizer = Recognizer(embeddings_database, model_path,
                             use_fixed_standardization=True,
                             metric="cosine_similarity")
@@ -32,13 +31,22 @@ def continous_detect(embeddings_database, names):
                 continue
 
             if person_index != -1:
-                print(names[person_index])
+                name = names[person_index]
+
+                if greeter:
+                    greeter.greet(name)
+
+                print(name)
                 print("Distance: {}".format(distance))
             else:
+                if greeter:
+                    greeter.greet("intruder")
+
                 print("Unknown face")
 
 if __name__ == "__main__":
     args = parser.parse_args()
     database_path = os.path.abspath(args.database_path)
     embeddings_database, names = database.load_database(database_path)
-    continous_detect(embeddings_database, names)
+    greeter = AudioGreeter(greeter_save_path)
+    continous_detect(embeddings_database, names, greeter)

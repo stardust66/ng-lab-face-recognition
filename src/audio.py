@@ -19,7 +19,7 @@ class AudioGreeter():
 
     def check_time(self):
         current_time = time.time()
-        if current_time - self.previous_time < 20:
+        if current_time - self.previous_time < 10:
             return False
         else:
             self.previous_time = current_time
