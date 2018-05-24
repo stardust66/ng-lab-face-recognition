@@ -10,3 +10,4 @@ psutil
 jupyter
 imageio
 dlib
+gTTS

@@ -2,6 +2,7 @@ venv/
 saved_models/*
 logs/
 databases/*
+tmp/*
 
 test_images/*
 !test_images/jason.jpg
