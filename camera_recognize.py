@@ -10,14 +10,22 @@ parser = argparse.ArgumentParser(description="Perform realtime facial "
                                              "recognition")
 parser.add_argument("database_path", help="Path to the embeddings database")
 
+model_path = os.path.join(
+    os.path.dirname(__file__),
+    "saved_models/model_vggface2"
+)
+
 def continous_detect(embeddings_database, names):
-    with utils.VideoCapture(0) as capture, \
-         Recognizer(embeddings_database) as recognizer:
+    recognizer = Recognizer(embeddings_database, model_path,
+                            use_fixed_standardization=True,
+                            metric="cosine_similarity")
+
+    with utils.VideoCapture(0) as capture, recognizer:
         while True:
             success, image = capture.read()
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-            person_index, distance = recognizer.classify(image, 0.02,
+            person_index, distance = recognizer.classify(image, 0.35,
                                                          debug=True)
             if person_index is None:
                 print("No face detected")

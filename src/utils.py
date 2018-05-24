@@ -3,6 +3,27 @@ import cv2
 import numpy as np
 from .facenet.src import facenet
 
+def fixed_standardization(image):
+    """Performs image standardization as suggested by David Sandberg
+
+    Some models are trained using fixed image standardization instead of
+    per image standardization. Consistency in this preprocessing step can
+    really boost performance.
+    """
+    # https://github.com/davidsandberg/facenet/blob/master/src/facenet.py#L121
+    return (image - 127.5) / 128.0
+
+def per_image_standardization(image):
+    """Performs per image standardization
+
+    Uses the tensorflow implementation of capping the standard deviation away
+    from zero to prevent dividing by zero in case of uniform images.
+    """
+    std = np.std(image)
+    mean = np.mean(image)
+    adjusted_std = max(std, 1.0 / np.sqrt(image.size))
+    return (image - mean) / adjusted_std
+
 def distance(embeddings1, embeddings2, metric="squared_l2"):
     """Calculates distance between embeddings
 

@@ -4,13 +4,8 @@ import tensorflow as tf
 from .facenet.src import facenet
 
 class FaceNet():
-    def __init__(self, sess):
+    def __init__(self, sess, model_path):
         self.sess = sess
-        model_path = os.path.join(
-            os.path.dirname(__file__),
-            "..",
-            "saved_models/model_casia"
-        )
 
         with self.sess.as_default():
             facenet.load_model(model_path)
