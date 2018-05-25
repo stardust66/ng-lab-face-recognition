@@ -2,23 +2,18 @@
 Raspberry Pi that greets people at the entrance of the engineering lab using
 facial recognition. Still in the preliminary stage.
 
-## Dependencies
-See `requirements.txt` for Python dependencies. Many of the requirements are
-inherited from https://github.com/davidsandberg/facenet.
-
-The audio component depends on `mpg321`, so install that with your favorite
-package manager.
-
 ## Setup
 You need to have python 3 installed. This repository uses git-lfs, so you
 should probably get it too, here: https://git-lfs.github.com/. You should also
 download pretrained facenet models from
 https://github.com/davidsandberg/facenet#pre-trained-models, unzip them, and
-place them under the saved_models top level directory. Then run:
+place them under the `saved_models` top level directory. Then run:
 ```
 git clone --recursive https://github.com/StPauls-Computer-Science/ng-lab-face-recognition.git
 pip install -r requirements.txt
 ```
+The audio component depends on `mpg321`, so install that with your favorite
+package manager.
 
 ## Running Recognition
 You should first generate a database of embeddings with
