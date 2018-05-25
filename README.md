@@ -35,10 +35,8 @@ filenames will be used as labels (people's names), so name your files
 appropriately.
 
 ## Notebook
-In the notebook `Embeddings_Test.ipynb`, I've been exploring the embeddings
-and building a simple face recognizer. If the GitHub notebook viewer doesn't
-work, use jupyter's [nbviewer](https://nbviewer.jupyter.org/) and paste in the
-notebook URL or click [here](https://nbviewer.jupyter.org/github/StPauls-Computer-Science/ng-lab-face-recognition/blob/master/Embeddings_Test.ipynb).
+In the notebook `Facial Recognition with FaceNet.ipynb`, I've been exploring
+the embeddings and building a simple face recognizer.
 
 #### A Note About Test Images
 I've provided three pictures of myself and Sam Henderson, who agreed to have
