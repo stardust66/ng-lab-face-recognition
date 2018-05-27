@@ -8,7 +8,7 @@ parser.add_argument("output_path", help="The path of the output file")
 parser.add_argument("input_directory", help="The directory of the photo files")
 parser.add_argument("files", help="Name of photo files separated by spaces"
                     ", can be 'all'", nargs="+")
-parser.add_argument("--use_fixed_standardization", action="store_true")
+parser.add_argument("--use-fixed-standardization", action="store_true")
 
 model_path = os.path.join(
     os.path.dirname(__file__),
