@@ -1,42 +1,42 @@
 # Engineering Lab Facial Recognition
-Raspberry Pi that greets people at the entrance of the engineering lab using
-facial recognition. Still in the preliminary stage.
+Recognize different people's faces and greet them verbally with just a single
+picture of each person. Works well with bad lighting and non-frontal poses.
 
 ## Setup
-You need to have python 3 installed. This repository uses git-lfs, so you
-should probably get it too, here: https://git-lfs.github.com/. You should also
-download pretrained facenet models from
-https://github.com/davidsandberg/facenet#pre-trained-models, unzip them, and
-place them under the `saved_models` top level directory. Then run:
+- Install python3
+- Install [git-lfs](https://git-lfs.github.com)
+- Download [pretrained models](https://github.com/davidsandberg/facenet#pre-trained-models)
+and put them in the `saved_models` top level directory
+- Install `mpg321` with a package manager or [here](https://sourceforge.net/projects/mpg321/files/latest/download?source=files)
+- Run
 ```
 git clone --recursive https://github.com/StPauls-Computer-Science/ng-lab-face-recognition.git
 pip install -r requirements.txt
 ```
-The audio component depends on `mpg321`, so install that with your favorite
-package manager.
 
 ## Running Recognition
-You should first generate a database of embeddings with
+Find a single picture of everyone you want to recognize and put them in a
+folder. Then, generate a database of embeddings with
 ```
-python create_database.py (output_file) (input_directory) (image_filenames)
+python create_database.py --use-fixed-standardization (output_file) \
+    (input_directory)
 ```
-Then, you can run real-time camera facial recognition with your webcame by
-running
+Then, you can do real-time camera facial recognition by running
 ```
 python camera_recognize.py (database_path)
 ```
-where `database_path` refers to the path to the file you just generated. The
-filenames will be used as labels (people's names), so name your files
-appropriately.
+where `database_path` refers to the file you just generated. The filenames will
+be used as labels (people's names).
 
 ## Notebook
 In the notebook `Facial Recognition with FaceNet.ipynb`, I've been exploring
-the embeddings and building a simple face recognizer.
+the embeddings and building a simple face recognizer. Check it out for a brief
+explanation of FaceNet and the embeddings.
 
 #### A Note About Test Images
 I've provided three pictures of myself and Sam Henderson, who agreed to have
-his pictures put online. For other pictures referenced in the notebook, just
-find some pictures online or get some from Google Images.
+his pictures put online. For other pictures referenced in the notebook, get
+some pictures from Google Images.
 
 ## Visualizing the saved model
 ```
