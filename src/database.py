@@ -23,12 +23,16 @@ def create_database(photo_paths, output_path, model_path,
     embeddings = np.zeros((num_photos, 512))
     names = []
 
+    print("Building embeddings database...")
+    print("0.00% =>", end="")
+
     for i, photo_path in enumerate(photo_paths):
         photo = imageio.imread(photo_path)
         face = aligner.align_and_crop_face(photo)
         name = os.path.basename(photo_path).split(".")[0]
 
         if face is None:
+            print()
             print("Couldn't align photo for {}, skipping".format(name))
             continue
 
@@ -43,6 +47,11 @@ def create_database(photo_paths, output_path, model_path,
         photo_embeddings = facenet.get_embeddings(face)
         embeddings[i] = photo_embeddings
 
+        percentage_done = i / num_photos * 100
+        progress_bar = "=" * int(percentage_done / 2) + "=>"
+        print("\r{:.2f}% {}".format(percentage_done, progress_bar), end="")
+
+    print("\r100.00% {}".format("=" * 50 + "=>"))
     np.savez(output_path, embeddings=embeddings, names=names)
 
     aligner.sess.close()
