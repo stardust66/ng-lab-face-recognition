@@ -14,7 +14,7 @@ parser.add_argument("database_path", help="Path to the embeddings database")
 model_path = os.path.abspath("./saved_models/model_vggface2")
 greeter_save_path = os.path.abspath("./tmp")
 
-def continous_detect(embeddings_database, names, greeter=None):
+def continuous_detect(embeddings_database, names, greeter=None):
     recognizer = Recognizer(embeddings_database, model_path,
                             use_fixed_standardization=True,
                             metric="cosine_similarity")
@@ -49,4 +49,4 @@ if __name__ == "__main__":
     database_path = os.path.abspath(args.database_path)
     embeddings_database, names = database.load_database(database_path)
     greeter = AudioGreeter(greeter_save_path)
-    continous_detect(embeddings_database, names, greeter)
+    continuous_detect(embeddings_database, names, greeter)
